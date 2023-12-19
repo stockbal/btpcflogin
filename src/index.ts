@@ -7,7 +7,7 @@ import path from "path";
 import { getDirname } from "./util/helper.js";
 import { LoginFlow } from "./commands/login.js";
 import { addLogin } from "./commands/add-login.js";
-import { setCfTarget } from "./commands/set-target.js";
+import { setCfSpace, setCfTarget } from "./commands/set-target.js";
 import { removeLogin } from "./commands/remove-login.js";
 import { sortLogins } from "./commands/sort-logins.js";
 
@@ -29,6 +29,11 @@ program
   .command("t")
   .description("Choose another target (org, space) of current region")
   .action(() => setCfTarget());
+
+program
+  .command("s")
+  .description("Change the targeted space of current region and org")
+  .action(() => setCfSpace());
 
 program
   .command("add-login")

@@ -12,3 +12,17 @@ export async function setCfTarget() {
     console.error(chalk.redBright(error));
   }
 }
+
+/**
+ * Changes the current space of the Cloud Foundry CLI via
+ * prompting the user 'space'
+ */
+export async function setCfSpace() {
+  try {
+    const cli = new CloudFoundryCli();
+    await cli.setSpace();
+    cli.printCurrentTarget();
+  } catch (error) {
+    console.error(chalk.redBright(error));
+  }
+}

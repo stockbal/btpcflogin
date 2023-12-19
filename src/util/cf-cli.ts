@@ -57,9 +57,9 @@ export class CloudFoundryCli {
     if (!(await this.setOrg())) return;
     if (!(await this.setSpace())) return;
 
-    // print current cf target
-    console.log(chalk.cyanBright(this.getCurrentTarget()));
+    this.printCurrentTarget();
   }
+
   async setSpace() {
     const cfSpaces = this.getSpaces();
     if (!cfSpaces?.length) {
@@ -98,6 +98,10 @@ export class CloudFoundryCli {
     apiProgress.stop();
 
     return { apiRegionCode, apiRegionDomain };
+  }
+
+  printCurrentTarget() {
+    console.log(chalk.cyanBright(this.getCurrentTarget()));
   }
 
   private getCurrentTarget() {
